@@ -15,28 +15,28 @@ export class AppComponent {
     this.slides = [
       {
         image: "assets/img/img_001.jpg",
-        animateClass: "fadeInRight",
         title: "Where there is love there is life.",
+        // animateClass: "fadeInRight",
       },
       {
         image: "assets/img/img_002.jpg",
         title: "Once you choose hope, anything’s possible.",
-        animateClass: "fadeInUp"
+        // animateClass: "fadeInUp"
       },
       {
         image: "assets/img/img_003.jpg",
         title: "I will go anywhere as long as it is forward",
-        animateClass: "zoomIn"
+        // animateClass: "zoomIn"
       },
       {
         image: "assets/img/img_004.jpg",
         title: "You change your life by changing your heart",
-        animateClass: "flipInX"
+        // animateClass: "flipInX"
       },
       {
         image: "assets/img/img_005.jpg",
         title: "The best way to pay for a lovely moment is to enjoy it",
-        animateClass: "fadeInUp"
+        // animateClass: "fadeInUp"
       }
     ]
 

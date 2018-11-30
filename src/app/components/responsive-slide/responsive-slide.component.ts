@@ -17,8 +17,10 @@ export class ResponsiveSlideComponent implements OnInit {
   title: string;
   count: number = 0;
 
+  slideInterval: any;
+
   ngOnInit() {
-    this.ResponsiveSlideHandle();
+    this.ResponsiveSlideHandle();    
   }
 
   ResponsiveSlideHandle() {
@@ -27,13 +29,15 @@ export class ResponsiveSlideComponent implements OnInit {
 
     this.GenerateSlide(rslides);
 
-    setInterval(() => {
+    this.slideInterval = setInterval(() => {
+      this.IncrementCount();
       this.GenerateSlide(rslides);
       if (this.count >= this.slides.length) {
         this.ResetCount();
       }
 
     }, this.interval);
+
   }
 
   AnimateTitleHandle(value) {
@@ -46,7 +50,6 @@ export class ResponsiveSlideComponent implements OnInit {
     this.AnimateTitleHandle(this.slides[this.count].animateClass);
     rslides.style.backgroundImage = `url(${this.slides[this.count].image})`;
     this.title = this.slides[this.count].title;
-    this.IncrementCount();
   }
 
   ResetCount() {
@@ -55,6 +58,14 @@ export class ResponsiveSlideComponent implements OnInit {
 
   IncrementCount() {
     this.count++;
+    if (this.count >= this.slides.length)
+      this.ResetCount();
+  }
+
+  DecrementCount() {
+    this.count--;
+    if (this.count < 0)
+      this.count = this.slides.length - 1
   }
 
   AddClass(element, _class) {
@@ -65,6 +76,26 @@ export class ResponsiveSlideComponent implements OnInit {
     setTimeout(() => {
       element.classList.remove(_class);
     }, 900);
+  }
+
+  ArrowSlidePrevious() {
+    this.DecrementCount();
+    const rslides = document.getElementById('rslides');
+    this.GenerateSlide(rslides);
+  }
+
+  ArrowSlideNext() {
+    this.IncrementCount();
+    const rslides = document.getElementById('rslides');
+    this.GenerateSlide(rslides);
+  }
+
+  SlideMouseOver(){
+    clearInterval(this.slideInterval)
+  }
+
+  SlideMouseLeave(){
+    this.ResponsiveSlideHandle();  
   }
 
 }

@@ -21,6 +21,7 @@ export class ResponsiveSlideComponent implements OnInit {
 
   ngOnInit() {
     this.ResponsiveSlideHandle();    
+    this.DestroyLoadImage();
   }
 
   ResponsiveSlideHandle() {
@@ -96,6 +97,10 @@ export class ResponsiveSlideComponent implements OnInit {
 
   SlideMouseLeave(){
     this.ResponsiveSlideHandle();  
+  }
+
+  DestroyLoadImage(){
+    document.getElementById('loadimage').remove();
   }
 
 }
